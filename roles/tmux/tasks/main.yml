@@ -3,12 +3,12 @@
   apt:
       name: tmux
 - name: Install Tmux Plugin Manager
-  shell: |
-      git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  shell: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  run_once: true
 - name: Copy .tmux.conf
   copy:
       src: "{{ role_path }}/files/.tmux.conf"
       dest: ~/.tmux.conf
 - name: Reload tmux environment so tpm is sourced
-  shell: |
-      tmux source ~/.tmux.conf
+  shell: tmux source ~/.tmux.conf
+  run_once: true
