@@ -18,7 +18,11 @@
       - automake
       - autoconf
       - cmake
-- name: Install uncompressed tools
+- name: Install compress and uncompress tools
   apt:
-      name: unzip
+      name: "{{ item }}"
+      state: installed
+  with_items:
+      - zip
+      - unzip
 
