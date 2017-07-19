@@ -15,12 +15,9 @@
       ln -s ~/.vim/vimrc ~/.vimrc
   when: vim_exists.stat.exists == False
   run_once: true
-- name: Chdir to ~/.vim
-  shell: |
-      pushd `pwd`
-      cd ~/.vim
 - name: Update vim config
   shell: |
+      cd ~/.vim
       git pull origin master
   when: vim_exists.stat.exists == True
 - name: Initialize the vim plugins
@@ -31,7 +28,5 @@
   run_once: true
 - name: Update all the vim plugins
   shell: |
+      cd ~/.vim
       git submodule foreach git pull origin master
-- name: Go to the original dir
-  shell: |
-      popd
