@@ -1,0 +1,24 @@
+---
+- name: Install git
+  apt:
+      name: git
+- name: Install building tools
+  apt:
+      name: "{{ item }}"
+      # state: latest
+      state: installed
+      # update_cache: yes
+  with_items:
+      - build-essential
+      - gcc
+      - g++
+      - clang
+      - llvm
+      - make
+      - automake
+      - autoconf
+      - cmake
+- name: Install uncompressed tools
+  apt:
+      name: unzip
+
