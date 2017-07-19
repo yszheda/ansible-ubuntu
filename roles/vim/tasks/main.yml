@@ -1,0 +1,15 @@
+---
+- name: Install vim
+  apt:
+      name: vim
+- name: Install git
+  apt:
+      name: git
+- name: Download and use my config
+  shell: |
+      git clone https://github.com/yszheda/myvimconfig.git ~/.vim
+      ln -s ~/.vim/vimrc ~/.vimrc
+      cd ~/.vim
+      git submodule init
+      git submodule update
+      git submodule foreach git pull origin master

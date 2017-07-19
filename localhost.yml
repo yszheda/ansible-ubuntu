@@ -4,3 +4,4 @@
   roles:
       - { role: common }
       - { role: zsh }
+      - { role: vim }
