@@ -4,3 +4,7 @@
       name: curl
 - name: Download oh-my-zsh
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+- name: Copy .zshrc
+  copy:
+      src: "{{ role_path }}/files/.zshrc"
+      dest: ~/.zshrc
