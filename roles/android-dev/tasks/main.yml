@@ -20,7 +20,9 @@
       state: installed
       update_cache: yes
   with_items:
-      - oracle-java7-installer
+      - default-jre
+      - default-jdk
+      - oracle-java9-installer
       - ant
       - libx11-dev
       - libxmu-dev
@@ -41,3 +43,4 @@
       - libglu1-mesa-dev
       - lib32stdc++6
       - lib32z1
+  ignore_errors: yes
