@@ -35,4 +35,9 @@
   with_items:
       - ctags
       - cscope
-
+- name: Install sudo
+  apt:
+      name: sudo
+- name: Install apt-fast
+  shell: /bin/bash -c "$(curl -sL https://git.io/vokNn)"
+  run_once: true
