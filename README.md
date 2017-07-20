@@ -7,7 +7,9 @@ Use [ansible](https://www.ansible.com/) to automatically setup my development en
 
 2. Download this repo and `cd` to the directory.
 
-3. Setup the environment on local machine:
+3. Configure your roles in `localhost.yml`. The `roles` directory list all the available roles.
+
+4. Setup the environment on local machine:
 
 Run:
 
