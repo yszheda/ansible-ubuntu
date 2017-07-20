@@ -2,13 +2,23 @@
 - name: Install tmux
   apt:
       name: tmux
+- name: Check whether ~/.tmux/plugins/tpm exists
+  stat:
+      path: ~/.tmux/plugins/tpm
+  register: tpm_exists
 - name: Install Tmux Plugin Manager
   shell: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   run_once: true
+  when: tpm_exists.stat.exists == False
 - name: Copy .tmux.conf
   copy:
       src: "{{ role_path }}/files/.tmux.conf"
       dest: ~/.tmux.conf
+- name: Check whether tmux is running
+  shell: ps aux | grep tmux | grep -v grep
+  ignore_errors: yes
+  changed_when: false
+  register: tmux_status
 - name: Reload tmux environment so tpm is sourced
   shell: tmux source ~/.tmux.conf
-  run_once: true
+  when: tmux_status.rc == 0
