@@ -1,7 +1,21 @@
 ---
+- name: Copy .bashrc
+  copy:
+      src: "{{ role_path }}/files/.bashrc"
+      dest: ~/.bashrc
 - name: Install git
   apt:
       name: git
+- name: Install sudo
+  apt:
+      name: sudo
+- name: Install apt-fast
+  shell: |
+      /bin/bash -c "$(curl -sL https://git.io/vokNn)"
+      alias apt-get='apt-fast'
+      touch ~/.bash_aliases
+      echo "alias apt-get='apt-fast'" >> ~/.bash_aliases
+  run_once: true
 - name: Install building tools
   apt:
       name: "{{ item }}"
@@ -35,9 +49,3 @@
   with_items:
       - ctags
       - cscope
-- name: Install sudo
-  apt:
-      name: sudo
-- name: Install apt-fast
-  shell: /bin/bash -c "$(curl -sL https://git.io/vokNn)"
-  run_once: true
