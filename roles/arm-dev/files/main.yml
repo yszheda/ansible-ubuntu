@@ -1,0 +1,49 @@
+---
+- name: Install
+  apt:
+      name: "{{ item }}"
+      state: installed
+  with_items:
+      - arm-none-eabi-newlib
+      - binutils-arm-linux-gnueabi
+      - binutils-arm-linux-gnueabihf
+      - binutils-arm-none-eabi
+      - cpp-arm-linux-gnueabi
+      - g++-4.8-arm-linux-gnueabihf
+      - g++-4.9-arm-linux-gnueabihf
+      - g++-arm-linux-gnueabi
+      - g++-arm-linux-gnueabihf
+      - gcc-4.8-arm-linux-gnueabihf
+      - gcc-4.8-arm-linux-gnueabihf-base
+      - gcc-arm-embedded
+      - gcc-arm-linux-androideabi
+      - gcc-arm-linux-gnueabi
+      - gcc-arm-linux-gnueabihf
+      - gcc-arm-none-eabi
+      - gcc-arm-none-eabi-source
+      - gdb-arm-none-eabi
+      - gdb-multiarch
+      - ia32-libs-multiarch
+      - lib32ncurses5
+      - lib32z1
+      - libc6-arm64-cross
+      - libc6-armel-cross
+      - libc6-armhf-cross
+      - libc6-dev-arm64-cross
+      - libc6-dev-armel-cross
+      - libc6-dev-armhf-cross
+      - libc6:i386
+      - libncurses5-dev
+      - libncurses5:i386
+      - libnewlib-arm-none-eabi
+      - libnewlib-dev
+      - libnewlib-doc
+      - libstdc++6-arm64-cross
+      - libstdc++6-armhf-cross
+      - libstdc++6:i386
+      - libstdc++-arm-none-eabi-newlib
+      - linux-libc-dev-arm64-cross
+      - linux-libc-dev-armel-cross
+      - linux-libc-dev-armhf-cross
+      - newlib-source
+      - zlib1g:i386
