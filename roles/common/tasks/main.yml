@@ -25,4 +25,14 @@
   with_items:
       - zip
       - unzip
+- name: Install silversearcher-ag
+  apt:
+      name: silversearcher-ag
+- name: Install ctags, cscope
+  apt:
+      name: "{{ item }}"
+      state: installed
+  with_items:
+      - ctags
+      - cscope
 
