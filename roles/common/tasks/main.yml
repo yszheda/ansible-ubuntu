@@ -39,9 +39,11 @@
   with_items:
       - zip
       - unzip
+  sudo: yes
 - name: Install silversearcher-ag
   apt:
       name: silversearcher-ag
+  sudo: yes
 - name: Install ctags, cscope
   apt:
       name: "{{ item }}"
@@ -49,3 +51,4 @@
   with_items:
       - ctags
       - cscope
+  sudo: yes

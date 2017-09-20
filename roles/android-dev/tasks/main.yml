@@ -7,13 +7,16 @@
   with_items:
       - python-software-properties
       - software-properties-common
+  sudo: yes
 - name: Accept oracle license
   shell: |
       echo "debconf shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
       echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections
+  sudo: yes
 - name: Add oracle java repository
   apt_repository:
       repo: 'ppa:webupd8team/java'
+  sudo: yes
 - name: Install related java packages
   apt:
       name: "{{ item }}"
@@ -44,3 +47,4 @@
       - lib32stdc++6
       - lib32z1
   ignore_errors: yes
+  sudo: yes

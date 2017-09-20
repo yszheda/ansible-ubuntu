@@ -2,6 +2,7 @@
 - name: Install tmux
   apt:
       name: tmux
+  sudo: yes
 - name: Check whether ~/.tmux/plugins/tpm exists
   stat:
       path: ~/.tmux/plugins/tpm
