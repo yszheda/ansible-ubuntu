@@ -4,7 +4,7 @@
       name:
           - python-software-properties
           - software-properties-common
-      state: installed
+      state: present
       update_cache: yes
   become: yes
 - name: Accept oracle license
@@ -42,7 +42,7 @@
           - libglu1-mesa-dev
           - lib32stdc++6
           - lib32z1
-      state: installed
+      state: present
       update_cache: yes
   ignore_errors: yes
   become: yes

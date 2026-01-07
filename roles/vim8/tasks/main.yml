@@ -20,7 +20,7 @@
           - liblua5.1-dev
           - libperl-dev
           - git
-      state: installed
+      state: present
 - name: Remove vim if you have it already.
   apt:
       name:

@@ -45,5 +45,5 @@
           - linux-libc-dev-armhf-cross
           - newlib-source
           - zlib1g:i386
-      state: installed
+      state: present
   become: yes

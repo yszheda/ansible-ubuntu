@@ -29,14 +29,14 @@
           - autoconf
           - cmake
       # state: latest
-      state: installed
+      state: present
       # update_cache: yes
 - name: Install compress and uncompress tools
   apt:
       name:
           - zip
           - unzip
-      state: installed
+      state: present
   become: yes
 - name: Install silversearcher-ag
   apt:
@@ -47,5 +47,5 @@
       name:
           - ctags
           - cscope
-      state: installed
+      state: present
   become: yes
