@@ -9,6 +9,10 @@
 - name: Install sudo
   apt:
       name: sudo
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  become: yes
 - name: Fix broken packages
   ansible.builtin.shell: apt --fix-broken install
   become: yes
