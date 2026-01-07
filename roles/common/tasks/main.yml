@@ -1,54 +1,45 @@
 ---
 - name: Copy .bashrc
   copy:
-      src: "{{ role_path }}/files/.bashrc"
-      dest: ~/.bashrc
-- name: Install git
-  apt:
-      name: git
-- name: Install sudo
-  apt:
-      name: sudo
+    src: "{{ role_path }}/files/.bashrc"
+    dest: ~/.bashrc
 - name: Install apt-fast
   shell: |
-      /bin/bash -c "$(curl -sL https://git.io/vokNn)"
-      alias apt-get='apt-fast'
-      touch ~/.bash_aliases
-      echo "alias apt-get='apt-fast'" >> ~/.bash_aliases
+    /bin/bash -c "$(curl -sL https://git.io/vokNn)"
+    alias apt-get='apt-fast'
+    touch ~/.bash_aliases
+    echo "alias apt-get='apt-fast'" >> ~/.bash_aliases
   run_once: true
 - name: Install building tools
   apt:
-      name: "{{ item }}"
-      # state: latest
-      state: installed
-      # update_cache: yes
+    name: "{{ item }}"
+    # state: latest
+    state: present
+  # update_cache: yes
   with_items:
-      - build-essential
-      - gcc
-      - g++
-      - clang
-      - llvm
-      - make
-      - automake
-      - autoconf
-      - cmake
+    - build-essential
+    - gcc
+    - g++
+    - clang
+    - llvm
+    - make
+    - automake
+    - autoconf
+    - cmake
 - name: Install compress and uncompress tools
   apt:
-      name: "{{ item }}"
-      state: installed
+    name: "{{ item }}"
+    state: present
   with_items:
-      - zip
-      - unzip
-  sudo: yes
+    - zip
+    - unzip
 - name: Install silversearcher-ag
   apt:
-      name: silversearcher-ag
-  sudo: yes
+    name: silversearcher-ag
 - name: Install ctags, cscope
   apt:
-      name: "{{ item }}"
-      state: installed
+    name: "{{ item }}"
+    state: present
   with_items:
-      - ctags
-      - cscope
-  sudo: yes
+    - ctags
+    - cscope

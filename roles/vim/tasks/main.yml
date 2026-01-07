@@ -1,32 +1,32 @@
 ---
 - name: Install vim
   apt:
-      name: vim
+    name: vim
 - name: Install git
   apt:
-      name: git
+    name: git
 - name: Check whether ~/.vim exists
   stat:
-      path: ~/.vim
+    path: ~/.vim
   register: vim_exists
 - name: Download and use my config
   shell: |
-      git clone https://github.com/yszheda/myvimconfig.git ~/.vim
-      ln -s ~/.vim/vimrc ~/.vimrc
+    git clone https://github.com/yszheda/myvimconfig.git ~/.vim
+    ln -s ~/.vim/vimrc ~/.vimrc
   when: vim_exists.stat.exists == False
   run_once: true
 - name: Update vim config
   shell: |
-      cd ~/.vim
-      git pull origin master
+    cd ~/.vim
+    git pull origin master
   when: vim_exists.stat.exists == True
 - name: Initialize the vim plugins
   shell: |
-      cd ~/.vim
-      git submodule init
-      git submodule update
+    cd ~/.vim
+    git submodule init
+    git submodule update
   run_once: true
 - name: Update all the vim plugins
   shell: |
-      cd ~/.vim
-      git submodule foreach git pull origin master
+    cd ~/.vim
+    git submodule foreach git pull origin master

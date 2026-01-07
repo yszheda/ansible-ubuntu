@@ -1,11 +1,11 @@
 ---
 - name: Install curl
   apt:
-      name: curl
+    name: curl
 - name: Download oh-my-zsh
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   run_once: true
 - name: Copy .zshrc
   copy:
-      src: "{{ role_path }}/files/.zshrc"
-      dest: ~/.zshrc
+    src: "{{ role_path }}/files/.zshrc"
+    dest: ~/.zshrc
