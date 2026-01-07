@@ -1,4 +1,20 @@
 ---
+- name: Install locales package
+  ansible.builtin.apt:
+    name: locales
+    state: present
+  become: yes
+
+- name: Generate en_US.UTF-8 locale
+  ansible.builtin.command: locale-gen en_US.UTF-8
+  become: yes
+  changed_when: false
+
+- name: Set default locale to en_US.UTF-8
+  ansible.builtin.command: update-locale LANG=en_US.UTF-8
+  become: yes
+  changed_when: false
+
 - name: Copy .bashrc
   copy:
       src: "{{ role_path }}/files/.bashrc"
