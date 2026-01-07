@@ -9,6 +9,9 @@
 - name: Install sudo
   apt:
       name: sudo
+- name: Fix broken packages
+  ansible.builtin.shell: apt --fix-broken install
+  become: yes
 - name: Install apt-fast
   shell: |
       /bin/bash -c "$(curl -sL https://git.io/vokNn)"
