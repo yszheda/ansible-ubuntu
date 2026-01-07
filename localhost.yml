@@ -2,6 +2,7 @@
   connection: local
   roles:
       - role: common
+      - role: nvidia
       - role: zsh
       - role: vim
       - role: tmux

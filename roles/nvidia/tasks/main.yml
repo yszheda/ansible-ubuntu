@@ -1,0 +1,12 @@
+---
+- name: Purge conflicting L4T NVIDIA packages
+  ansible.builtin.apt:
+    name:
+      - nvidia-l4t-cuda
+      - nvidia-l4t-3d-core
+      - nvidia-l4t-gbm
+      - nvidia-l4t-cuda-utils
+      - nvidia-l4t-init-openrm
+    state: absent
+    purge: yes
+  become: yes
