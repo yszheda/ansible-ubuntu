@@ -1,10 +1,9 @@
 - hosts: localhost
   connection: local
-  # sudo: yes
   roles:
-      - { role: common }
-      - { role: zsh }
-      - { role: vim }
-      - { role: tmux }
-      - { role: android-dev }
-      - { role: arm-dev }
+      - role: common
+      - role: zsh
+      - role: vim
+      - role: tmux
+      - role: android-dev
+      - role: arm-dev

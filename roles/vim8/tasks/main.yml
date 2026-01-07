@@ -2,34 +2,32 @@
 # https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source
 - name: Install prerequisite libraries
   apt:
-      name: "{{ item }}"
+      name:
+          - libncurses5-dev
+          - libgnome2-dev
+          - libgnomeui-dev
+          - libgtk2.0-dev
+          - libatk1.0-dev
+          - libbonoboui2-dev
+          - libcairo2-dev
+          - libx11-dev
+          - libxpm-dev
+          - libxt-dev
+          - python-dev
+          - python3-dev
+          - ruby-dev
+          - lua5.1
+          - liblua5.1-dev
+          - libperl-dev
+          - git
       state: installed
-  with_items:
-    - libncurses5-dev
-    - libgnome2-dev
-    - libgnomeui-dev
-    - libgtk2.0-dev
-    - libatk1.0-dev
-    - libbonoboui2-dev
-    - libcairo2-dev
-    - libx11-dev
-    - libxpm-dev
-    - libxt-dev
-    - python-dev
-    - python3-dev
-    - ruby-dev
-    - lua5.1
-    - liblua5.1-dev
-    - libperl-dev
-    - git
 - name: Remove vim if you have it already.
   apt:
-      name: "{{ item }}"
+      name:
+          - vim
+          - vim-runtime
+          - gvim
       state: absent
-  with_items:
-      - vim
-      - vim-runtime
-      - gvim
 - name: Clone and build vim
   shell: |
       cd ~
@@ -51,5 +49,6 @@
       --with-x \
       --prefix=/usr/local
       make VIMRUNTIMEDIR=/usr/local/share/vim/vim81
-      sudo make install
+      make install
   run_once: true
+  become: yes

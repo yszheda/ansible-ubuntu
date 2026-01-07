@@ -1,50 +1,48 @@
 ---
 - name: Install software-properties
   apt:
-      name: "{{ item }}"
+      name:
+          - python-software-properties
+          - software-properties-common
       state: installed
       update_cache: yes
-  with_items:
-      - python-software-properties
-      - software-properties-common
-  sudo: yes
+  become: yes
 - name: Accept oracle license
   shell: |
       echo "debconf shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
       echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections
-  sudo: yes
+  become: yes
 - name: Add oracle java repository
   apt_repository:
       repo: 'ppa:webupd8team/java'
-  sudo: yes
+  become: yes
 - name: Install related java packages
   apt:
-      name: "{{ item }}"
+      name:
+          - default-jre
+          - default-jdk
+          - oracle-java9-installer
+          - ant
+          - libx11-dev
+          - libxmu-dev
+          - libglu1-mesa-dev
+          - libgl2ps-dev
+          - libxi-dev
+          - g++
+          - cmake
+          - libzip-dev
+          - libpng12-dev
+          - libcurl4-gnutls-dev
+          - libfontconfig1-dev
+          - libsqlite3-dev
+          - libglew-dev
+          - libssl-dev
+          - libgnutls-dev
+          - xorg-dev
+          - libglu1-mesa-dev
+          - lib32stdc++6
+          - lib32z1
       state: installed
       update_cache: yes
-  with_items:
-      - default-jre
-      - default-jdk
-      - oracle-java9-installer
-      - ant
-      - libx11-dev
-      - libxmu-dev
-      - libglu1-mesa-dev
-      - libgl2ps-dev
-      - libxi-dev
-      - g++
-      - cmake
-      - libzip-dev
-      - libpng12-dev
-      - libcurl4-gnutls-dev
-      - libfontconfig1-dev
-      - libsqlite3-dev
-      - libglew-dev
-      - libssl-dev
-      - libgnutls-dev
-      - xorg-dev
-      - libglu1-mesa-dev
-      - lib32stdc++6
-      - lib32z1
   ignore_errors: yes
-  sudo: yes
+  become: yes

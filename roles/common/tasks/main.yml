@@ -18,37 +18,34 @@
   run_once: true
 - name: Install building tools
   apt:
-      name: "{{ item }}"
+      name:
+          - build-essential
+          - gcc
+          - g++
+          - clang
+          - llvm
+          - make
+          - automake
+          - autoconf
+          - cmake
       # state: latest
       state: installed
       # update_cache: yes
-  with_items:
-      - build-essential
-      - gcc
-      - g++
-      - clang
-      - llvm
-      - make
-      - automake
-      - autoconf
-      - cmake
 - name: Install compress and uncompress tools
   apt:
-      name: "{{ item }}"
+      name:
+          - zip
+          - unzip
       state: installed
-  with_items:
-      - zip
-      - unzip
-  sudo: yes
+  become: yes
 - name: Install silversearcher-ag
   apt:
       name: silversearcher-ag
-  sudo: yes
+  become: yes
 - name: Install ctags, cscope
   apt:
-      name: "{{ item }}"
+      name:
+          - ctags
+          - cscope
       state: installed
-  with_items:
-      - ctags
-      - cscope
-  sudo: yes
+  become: yes
