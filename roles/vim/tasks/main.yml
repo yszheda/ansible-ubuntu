@@ -1,10 +1,10 @@
 ---
-- name: Install vim
-  apt:
-      name: vim
-- name: Install git
-  apt:
-      name: git
+# - name: Install vim
+#   apt:
+#       name: vim
+# - name: Install git
+#   apt:
+#       name: git
 - name: Check whether ~/.vim exists
   stat:
       path: ~/.vim
